@@ -1,15 +1,15 @@
 variable "compose_release" {
-  type = string
+  type    = string
   default = "1.25.5"
 }
 
 variable "redcloud_domain" {
-  type = string
+  type    = string
   default = null
 }
 
 variable "redcloud_server_hostname_prefix" {
-  type = string
+  type    = string
   default = null
 }
 

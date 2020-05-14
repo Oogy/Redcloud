@@ -20,13 +20,13 @@ data "vultr_application" "application" {
 }
 
 resource "vultr_ssh_key" "local" {
-  name = "provisioner"
+  name    = "provisioner"
   ssh_key = trimspace(file("~/.ssh/id_rsa.pub"))
 }
 
 resource "vultr_ssh_key" "extra" {
-  count = length(var.extra_ssh_keys)
-  name = "provisioner"
+  count   = length(var.extra_ssh_keys)
+  name    = "provisioner"
   ssh_key = var.extra_ssh_keys[count.index]
 }
 
@@ -35,21 +35,21 @@ resource "vultr_server" "server" {
   region_id   = data.vultr_region.region.id
   plan_id     = data.vultr_plan.server_plan.id
   app_id      = data.vultr_application.application.id
-  hostname    = "${var.redcloud_server_hostname_prefix}-${count.index}
-  label       = "${var.redcloud_server_hostname_prefix}-${count.index}
+  hostname    = "${var.redcloud_server_hostname_prefix}-${count.index}"
+  label       = "${var.redcloud_server_hostname_prefix}-${count.index}"
   ssh_key_ids = [vultr_ssh_key.local.id, vultr_ssh_key.extra.id]
 
   connection {
-    type = "ssh"
-    user = "root"
-    host = self.main_ip
+    type        = "ssh"
+    user        = "root"
+    host        = self.main_ip
     private_key = file("~/.ssh/id_rsa")
-  } 
+  }
 
   provisioner "remote-exec" {
     inline = [
       "wget https://github.com/docker/compose/releases/download/${var.compose_release}/docker-compose-Linux-x86_64",
-      "mv docker-compose-Linux-x86_64 /usr/local/bin/docker-compose"
+      "mv docker-compose-Linux-x86_64 /usr/local/bin/docker-compose",
       "chmod +x /usr/local/bin/docker-compose",
     ]
   }
