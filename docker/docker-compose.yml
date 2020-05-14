@@ -27,9 +27,6 @@ services:
       - "traefik.frontend.auth.basic.usersFile=/etc/traefik/.htpasswd"
       - "traefik.port=8081"
 
-
-        
-
   templates:
       build : templates/
       container_name: "templates"
@@ -52,7 +49,6 @@ services:
         - "traefik.sec.frontend.auth.basic.users=admin:$$apr1$$JWufnu2u$$jK16K8EczmfIBDk5p3xw6/"
         - "traefik.nosec.frontend.rule=PathPrefixStrip:/files"
         - "traefik.nosec.port=80"
-  
   
   portainer:
       image: portainer/portainer
