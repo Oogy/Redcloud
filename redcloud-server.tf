@@ -37,7 +37,7 @@ resource "vultr_server" "server" {
   app_id      = data.vultr_application.application.id
   hostname    = "${var.redcloud_server_hostname_prefix}-${count.index}"
   label       = "${var.redcloud_server_hostname_prefix}-${count.index}"
-  ssh_key_ids = vultr_ssh_key.local.id
+  ssh_key_ids = [vultr_ssh_key.local.id]
 
   connection {
     type        = "ssh"
