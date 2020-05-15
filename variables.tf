@@ -8,6 +8,11 @@ variable "redcloud_domain" {
   default = null
 }
 
+variable "redcloud_domain_exists" {
+  type    = bool
+  default = false
+}
+
 variable "redcloud_server_hostname_prefix" {
   type    = string
   default = null
@@ -39,6 +44,6 @@ variable "extra_ssh_keys" {
 }
 
 variable "portainer_logo_url" {
-  type    = string
+  type = string
   default = null
 }
