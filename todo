@@ -1,0 +1,26 @@
+.
+├── files
+│   └── portainer-templates
+│       └── templates.dev.yml
+├── templates
+│   └── docker-compose.yml.tpl
+├── main.tf.tpl
+├── outputs.tf
+├── README.md
+├── redcloud-data.tf
+├── redcloud-dns.tf
+├── redcloud-pwd.tf
+├── redcloud-server.tf
+├── redcloud-ssl.tf
+├── state.tf.tpl
+├── todo
+└── variables.tf
+
+3 directories, 13 files
+
+## TODO
+
+* Template out docker-compose.yml.tpl with admin pass, logo, and redcloud subdomain
+	* Ensure portainer is accessible via redcloud.domain.com
+
+* Mount templates in portainer container
