@@ -38,3 +38,8 @@ variable "extra_ssh_keys" {
   default = []
 }
 
+variable "portainer_logo_url" {
+  type = string
+  default = null
+}
+
